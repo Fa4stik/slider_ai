@@ -2,6 +2,6 @@ version: '3'
 
 services:
   web:
-    image: fa4stik/slider_ai
+    image: fa4stik/slider_ai:latest
     ports:
       - "80:80"
