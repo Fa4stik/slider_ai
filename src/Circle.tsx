@@ -2,19 +2,16 @@ import { useEffect, useMemo } from 'react'
 import { getNumberByRange } from './lib/getNumberByRange.ts'
 import { animated, useSpring } from '@react-spring/web'
 import { useDrag } from '@use-gesture/react'
+import { CircleDia, Height, Width, X, Y } from './model/types.ts'
 
 type CircleProps = {
 	id: string
-	startCord: [number, number]
-	parentSize: [number, number]
-	circleDia: [number, number]
+	startCord: [X, Y]
+	parentSize: [Width, Height]
+	circleDia: CircleDia
 	isActive?: boolean
 	onClick: () => void
-	onDrag: (
-		id: string,
-		movement: [number, number],
-		isStopDragging: boolean,
-	) => void
+	onDrag: (id: string, movement: [X, Y], isStopDragging: boolean) => void
 }
 
 export const Circle = ({
@@ -35,6 +32,7 @@ export const Circle = ({
 		let newX = startX
 		let newY = startY
 
+		// Проверяет границы слайда при движении
 		if (startX < 0) {
 			newX = 0
 		}
@@ -43,6 +41,8 @@ export const Circle = ({
 			newY = 0
 		}
 
+		// Проверяет границы слайда при движении + при определении случайной величины.
+		// Изначально X, Y у круга прикреплены в левом верхнем углу и не учитывают диаметр
 		if (startX + dia > px) {
 			newX = px - dia
 		}
@@ -71,6 +71,7 @@ export const Circle = ({
 		},
 	)
 
+	// Перемещение выделенных кругов
 	useEffect(() => {
 		apiMove.start({ x: updatedCord[0], y: updatedCord[1] })
 	}, [updatedCord])

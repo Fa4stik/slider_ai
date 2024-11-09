@@ -1,26 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Circle } from './Circle.tsx'
 import { getNumberByRange } from './lib/getNumberByRange.ts'
+import { HappyProvider } from '@ant-design/happy-work-theme'
+import { Button } from 'antd'
+import { CircleData, Size } from './model/types.ts'
 
-type X = number
-type Y = number
-type Cord = [X, Y]
-
-type Width = number
-type Height = number
-type Size = [Width, Height]
-
-type MinDia = number
-type MaxDia = number
-type CircleDia = [MinDia, MaxDia]
-
-type CircleData = {
-	id: string
-	startCord: Cord
-	editedCord: Cord
-	circleDia: CircleDia
-}
-
+// Limited test-cases
 // const data: CircleData[] = [
 // 	{
 // 		startCord: [0, 0],
@@ -75,7 +60,7 @@ function App() {
 		setCircles(prevState =>
 			prevState ? [...prevState, circleData] : [circleData],
 		)
-	}, [slideRef])
+	}, [parentSize])
 
 	const handleAddActiveCircle = useCallback(
 		(id: string) => {
@@ -157,12 +142,13 @@ function App() {
 
 	return (
 		<div className='max-h-screen min-h-screen bg-gray flex flex-col justify-center items-center gap-5'>
-			<button
-				onClick={handleAddCircle}
-				className='px-14 py-2 bg-blue text-white rounded-xl'
-			>
-				Добавить
-			</button>
+			<div className={'px-[10vw] w-[35vw]'}>
+				<HappyProvider>
+					<Button type={'primary'} block onClick={handleAddCircle}>
+						Добавить
+					</Button>
+				</HappyProvider>
+			</div>
 			<div
 				className='w-[70vw] h-[70vh] bg-white rounded-2xl shadow-2xl relative'
 				ref={slideRef}
