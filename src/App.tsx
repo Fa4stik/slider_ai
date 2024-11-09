@@ -86,38 +86,27 @@ function App() {
 
 	const handleDragShape = useCallback(
 		(id: string, [mx, my]: [number, number], isStopDragging: boolean) => {
-			if (!activeCircles) {
-				return
-			}
-
-			setCircles(prevState => {
-				if (!prevState) {
-					return prevState
-				}
-
-				return prevState.map(c => {
-					if (!(c.id in activeCircles)) {
-						return c
-					}
-
-					if (isStopDragging) {
-						return {
-							...c,
-							startCord: [c.startCord[0] + mx, c.startCord[1] + my],
-							editedCord: [c.startCord[0] + mx, c.startCord[1] + my],
-						}
-					}
-
-					if (c.id === id) {
-						return c
-					}
-
-					return {
-						...c,
-						editedCord: [c.startCord[0] + mx, c.startCord[1] + my],
-					}
-				})
+			const updateCircle = (c: CircleData): CircleData => ({
+				...c,
+				startCord: [c.startCord[0] + mx, c.startCord[1] + my],
+				editedCord: [c.startCord[0] + mx, c.startCord[1] + my],
 			})
+
+			const updateEditedCord = (c: CircleData): CircleData => ({
+				...c,
+				editedCord: [c.startCord[0] + mx, c.startCord[1] + my],
+			})
+
+			setCircles(prevState =>
+				prevState
+					? prevState.map(c => {
+							if (c.id === id || (activeCircles && c.id in activeCircles)) {
+								return isStopDragging ? updateCircle(c) : updateEditedCord(c)
+							}
+							return c
+						})
+					: prevState,
+			)
 		},
 		[activeCircles],
 	)

@@ -6,7 +6,8 @@
 This project is a web application that allows users to add, move, and delete circles within a slide area. The circles are added at random positions and sizes within the slide area. The application is built using React and TypeScript, ensuring a modern and maintainable codebase. The project also includes functionality for selecting multiple circles and deleting them using the "**Backspace**" key. To select circles, you need to hold down the "**Left Control**" key
 
 ### Demo
-You can view a live demo of the project at https://slider-ai.herokuapp.com/.
+![Demo](https://i.imgur.com/NyuyO2w.gif)
+You can view a live demo of the project at https://fa4stik.github.io/slider_ai/.
 
 ### Run
 To run the project locally, you need to have Docker and Docker Compose installed, follow these steps:
@@ -81,7 +82,8 @@ The project should now be accessible in your browser at http://localhost:3000 or
 Этот проект представляет собой веб-приложение, которое позволяет пользователям добавлять, перемещать и удалять круги в области слайда. Круги добавляются в случайных позициях и размерах в пределах области слайда. Приложение построено с использованием React и TypeScript, обеспечивая современную и поддерживаемую кодовую базу. Проект также включает функциональность выбора нескольких кругов и их удаления с помощью клавиши "**Backspace**". Для выделения кругов необходимо зажать клавишу "**Left Control**"
 
 ### Демо
-Вы можете просмотреть демонстрацию проекта по ссылке https://slider-ai.herokuapp.com/.
+![Demo](https://i.imgur.com/NyuyO2w.gif)
+Вы можете просмотреть демонстрацию проекта по ссылке https://fa4stik.github.io/slider_ai/.
 
 ### Запуск
 Чтобы запустить проект локально, вам нужно установить Docker и Docker Compose, выполните следующие шаги:
