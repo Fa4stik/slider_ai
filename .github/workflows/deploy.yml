@@ -17,7 +17,7 @@ jobs:
         run: docker pull fa4stik/slider_ai:latest
 
       - name: Run Docker container
-        run: docker run --rm -p 80:80 fa4stik/slider_ai:latest
+        run: docker run -d -p 80:80 fa4stik/slider_ai:latest
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
