@@ -19,7 +19,7 @@ jobs:
           run_install: false
 
       - name: Build Docker image
-        run: docker build -f Dockerfile_prod -t ghcr.io/Fa4stik/slider_ai:latest .
+        run: docker build -f Dockerfile_prod -t ghcr.io/fa4stik/slider_ai:latest .
 
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
