@@ -24,6 +24,9 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Build Docker image
         run: pnpm run docker-build-prod
 
