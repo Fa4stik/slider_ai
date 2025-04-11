@@ -12,12 +12,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: '9'
-          run_install: false
-
       - name: Build Docker image
         run: docker build -f Dockerfile_prod -t ghcr.io/fa4stik/slider_ai:latest .
 
