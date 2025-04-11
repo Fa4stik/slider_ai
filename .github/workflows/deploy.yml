@@ -18,20 +18,8 @@ jobs:
           version: '9'
           run_install: false
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
       - name: Build Docker image
-        run: pnpm run docker-build-prod
-
-      - name: Tag Docker image for GitHub Container Registry
-        run: docker tag fa4stik/slider_ai:latest ghcr.io/Fa4stik/slider_ai:latest
+        run: docker build -f Dockerfile_prod -t ghcr.io/Fa4stik/slider_ai:latest .
 
       - name: Login to GitHub Container Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
