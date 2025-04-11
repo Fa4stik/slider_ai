@@ -3,8 +3,11 @@ name: publish
 on: [ push ]
 
 jobs:
-  publish-hello-docker-image:
+  build_and_push:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v2
       - name: Login to GitHub Container Registry
